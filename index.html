@@ -26,7 +26,6 @@
   html { scroll-behavior: smooth; }
   body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
 
-  /* ── NAV ── */
   nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
@@ -48,19 +47,14 @@
   .nav-links li a.nav-cta { color: var(--accent); }
   .nav-links li a.nav-cta:hover { color: var(--white); }
 
-  /* ── LAYOUT ── */
   .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
 
-  /* ── HERO ── */
   #hero { padding: 80px 2rem 72px; max-width: 860px; margin: 0 auto; }
   .hero-breadcrumb { font-family: var(--mono); font-size: 12px; color: var(--faint); margin-bottom: 32px; }
   .hero-breadcrumb span { color: var(--accent); }
   .hero-role { font-size: 13px; color: var(--muted); margin-bottom: 20px; letter-spacing: 0.03em; }
   .hero-role span { color: var(--accent); }
-  h1 {
-    font-size: 52px; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px;
-    color: var(--white); margin-bottom: 20px;
-  }
+  h1 { font-size: 52px; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px; color: var(--white); margin-bottom: 20px; }
   h1 em { color: var(--accent); font-style: italic; }
   .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
   .hero-tag { font-family: var(--mono); font-size: 11px; color: var(--muted); padding: 3px 10px; border: 1px solid var(--border2); border-radius: 3px; }
@@ -78,14 +72,48 @@
   .pill-val { font-size: 14px; color: var(--white); font-weight: 700; }
   .pill-val.accent { color: var(--accent); }
 
-  /* ── SECTION COMMON ── */
+  /* ── OPEN TO ROLES BANNER ── */
+  .open-roles-bar {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 2rem;
+  }
+  .open-roles-inner {
+    max-width: 860px; margin: 0 auto;
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  .open-roles-label {
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.12em; white-space: nowrap;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .open-roles-label::before {
+    content: ''; display: inline-block; width: 7px; height: 7px;
+    border-radius: 50%; background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+  .open-roles-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .role-chip {
+    font-size: 12px; font-weight: 600; padding: 5px 14px;
+    border: 1px solid rgba(74,143,255,0.3);
+    border-radius: 100px;
+    color: var(--accent2);
+    background: rgba(74,143,255,0.06);
+    transition: all 0.15s;
+  }
+  .role-chip:hover { background: rgba(74,143,255,0.14); border-color: var(--accent); color: var(--white); }
+
   .section { padding: 72px 2rem; max-width: 860px; margin: 0 auto; }
   .section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
   .section-num { font-family: var(--mono); font-size: 11px; color: var(--faint); margin-bottom: 12px; }
   h2 { font-size: 28px; font-weight: 700; color: var(--white); letter-spacing: -0.5px; margin-bottom: 32px; }
   h3 { font-size: 18px; font-weight: 700; color: var(--white); letter-spacing: -0.3px; }
 
-  /* ── EXPERIENCE ── */
   .exp-block { border: 1px solid var(--border); border-radius: 6px; padding: 28px; background: var(--bg2); }
   .exp-top { display: flex; justify-content: space-between; align-items: start; margin-bottom: 6px; flex-wrap: wrap; gap: 8px; }
   .exp-role-title { font-size: 17px; font-weight: 700; color: var(--white); }
@@ -98,12 +126,6 @@
   .exp-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 12px; top: 1px; }
   .exp-list li strong { color: var(--text); font-weight: 600; }
 
-  /* ── PROJECT FEATURED ── */
-  .featured-label { font-family: var(--mono); font-size: 11px; color: var(--faint); margin-bottom: 16px; letter-spacing: 0.08em; }
-  .featured-intro { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 28px; padding: 16px; border-left: 2px solid var(--border2); }
-  .featured-intro em { color: var(--faint); font-style: normal; font-family: var(--mono); font-size: 12px; display: block; margin-bottom: 8px; }
-
-  /* ── PROJECT CARDS ── */
   .projects-grid { display: flex; flex-direction: column; gap: 20px; }
   .project-card { border: 1px solid var(--border); border-radius: 6px; padding: 28px; background: var(--bg2); transition: border-color 0.2s; }
   .project-card:hover { border-color: rgba(74,143,255,0.35); }
@@ -111,8 +133,7 @@
   .proj-num { font-family: var(--mono); font-size: 11px; color: var(--faint); margin-bottom: 8px; }
   .proj-title { font-size: 17px; font-weight: 700; color: var(--white); }
   .proj-date { font-family: var(--mono); font-size: 11px; color: var(--faint); }
-  .proj-desc { font-size: 14px; color: var(--muted); line-height: 1.75; margin: 12px 0 16px; }
-  .proj-bullets { list-style: none; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .proj-bullets { list-style: none; margin: 12px 0 16px; display: flex; flex-direction: column; gap: 8px; }
   .proj-bullets li { padding-left: 18px; position: relative; font-size: 13px; color: var(--muted); line-height: 1.7; }
   .proj-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 12px; top: 1px; }
   .proj-bullets li strong { color: var(--text); }
@@ -123,14 +144,12 @@
   .proj-outcome { background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: 12px 16px; margin: 14px 0; font-size: 13px; color: var(--muted); line-height: 1.6; }
   .proj-outcome strong { color: var(--accent); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 4px; }
 
-  /* ── SKILLS ── */
   .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .skill-group { border: 1px solid var(--border); border-radius: 6px; padding: 22px; background: var(--bg2); }
   .skill-group-title { font-family: var(--mono); font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
   .skill-list { display: flex; flex-wrap: wrap; gap: 6px; }
   .skill-item { font-size: 12px; color: var(--muted); padding: 4px 10px; border: 1px solid var(--border); border-radius: 3px; background: var(--bg3); }
 
-  /* ── EDUCATION ── */
   .edu-grid { display: flex; flex-direction: column; gap: 16px; }
   .edu-card { border: 1px solid var(--border); border-radius: 6px; padding: 24px; background: var(--bg2); }
   .edu-top { display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
@@ -146,7 +165,6 @@
   .cert-text { font-size: 13px; color: var(--text); font-weight: 600; line-height: 1.4; }
   .cert-sub { font-size: 11px; color: var(--faint); margin-top: 2px; font-family: var(--mono); }
 
-  /* ── CONTACT ── */
   #contact-section { background: var(--bg2); border-top: 1px solid var(--border); }
   .contact-inner { max-width: 860px; margin: 0 auto; padding: 72px 2rem; }
   .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 32px; }
@@ -155,13 +173,11 @@
   .cc-label { font-family: var(--mono); font-size: 10px; color: var(--faint); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
   .cc-val { font-size: 13px; color: var(--text); font-weight: 600; word-break: break-all; line-height: 1.4; }
 
-  /* ── FOOTER ── */
   footer { border-top: 1px solid var(--border); padding: 24px 2rem; max-width: 860px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
   footer p { font-family: var(--mono); font-size: 11px; color: var(--faint); }
   footer a { color: var(--faint); text-decoration: none; }
   footer a:hover { color: var(--accent); }
 
-  /* ── ANIMATIONS ── */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   .fade-up { animation: fadeUp 0.5s ease forwards; }
   .d1 { animation-delay: 0.05s; opacity: 0; }
@@ -198,7 +214,7 @@
     <span class="hero-tag">Generative AI</span>
     <span class="hero-tag">ETL Pipelines</span>
   </div>
-  <p class="hero-bio fade-up d3">MS Data Science @ UT Arlington with 2+ years of industry experience transforming complex datasets into business insights. I build pipelines where data is cleaned before it's reported, dashboards where KPIs mean something, and workflows where AI reduces manual effort — not just adds noise.</p>
+  <p class="hero-bio fade-up d3">MS Data Science @ UT Arlington with 3+ years of experience transforming complex datasets into business insights. I build pipelines where data is cleaned before it's reported, dashboards where KPIs mean something, and workflows where AI reduces manual effort — not just adds noise.</p>
   <div class="hero-ctas fade-up d4">
     <a href="#experience" class="btn btn-outline">Work Experience</a>
     <a href="#projects" class="btn btn-outline">Projects</a>
@@ -215,6 +231,20 @@
     <div class="pill"><span class="pill-label">Query Perf. Gain</span><span class="pill-val accent">↑ +30%</span></div>
   </div>
 </section>
+
+<!-- OPEN TO ROLES BANNER -->
+<div class="open-roles-bar">
+  <div class="open-roles-inner">
+    <div class="open-roles-label">Open to roles</div>
+    <div class="open-roles-list">
+      <span class="role-chip">Data Analyst</span>
+      <span class="role-chip">Data Scientist</span>
+      <span class="role-chip">Data Engineer</span>
+      <span class="role-chip">BI Analyst</span>
+      <span class="role-chip">Deployed Engineer</span>
+    </div>
+  </div>
+</div>
 
 <hr class="section-divider">
 
@@ -265,11 +295,8 @@
         <li>Built <strong>5+ Power BI dashboards</strong> tracking KPIs, increasing visibility into product performance and customer behavior by <strong>40%</strong>.</li>
       </ul>
       <div class="proj-tags">
-        <span class="proj-tag">SQL</span>
-        <span class="proj-tag">Power BI</span>
-        <span class="proj-tag">Data Modeling</span>
-        <span class="proj-tag">CTEs</span>
-        <span class="proj-tag">Window Functions</span>
+        <span class="proj-tag">SQL</span><span class="proj-tag">Power BI</span><span class="proj-tag">Data Modeling</span>
+        <span class="proj-tag">CTEs</span><span class="proj-tag">Window Functions</span>
       </div>
       <a href="https://github.com/allenjoshua16" target="_blank" class="proj-link">View on GitHub →</a>
     </div>
@@ -290,11 +317,8 @@
         Unstructured customer feedback turned into a live intelligence layer — stakeholders stopped guessing sentiment and started acting on it.
       </div>
       <div class="proj-tags">
-        <span class="proj-tag">Python</span>
-        <span class="proj-tag">NLP</span>
-        <span class="proj-tag">TF-IDF</span>
-        <span class="proj-tag">Power BI</span>
-        <span class="proj-tag">scikit-learn</span>
+        <span class="proj-tag">Python</span><span class="proj-tag">NLP</span><span class="proj-tag">TF-IDF</span>
+        <span class="proj-tag">Power BI</span><span class="proj-tag">scikit-learn</span>
       </div>
       <a href="https://github.com/allenjoshua16" target="_blank" class="proj-link">View on GitHub →</a>
     </div>
@@ -315,10 +339,8 @@
         What used to take hours of manual write-up is now a structured, repeatable pipeline — analysts spend time on analysis, not formatting.
       </div>
       <div class="proj-tags">
-        <span class="proj-tag">Python</span>
-        <span class="proj-tag">Generative AI</span>
-        <span class="proj-tag">Prompt Engineering</span>
-        <span class="proj-tag">Automation</span>
+        <span class="proj-tag">Python</span><span class="proj-tag">Generative AI</span>
+        <span class="proj-tag">Prompt Engineering</span><span class="proj-tag">Automation</span>
       </div>
       <a href="https://github.com/allenjoshua16" target="_blank" class="proj-link">View on GitHub →</a>
     </div>
@@ -336,55 +358,37 @@
     <div class="skill-group">
       <div class="skill-group-title">Analytics & Querying</div>
       <div class="skill-list">
-        <span class="skill-item">SQL</span>
-        <span class="skill-item">Python</span>
-        <span class="skill-item">BigQuery</span>
-        <span class="skill-item">Power BI</span>
-        <span class="skill-item">DAX</span>
-        <span class="skill-item">Pandas</span>
-        <span class="skill-item">Window Functions</span>
-        <span class="skill-item">CTEs</span>
-        <span class="skill-item">Query Optimization</span>
-        <span class="skill-item">EDA</span>
+        <span class="skill-item">SQL</span><span class="skill-item">Python</span><span class="skill-item">BigQuery</span>
+        <span class="skill-item">Power BI</span><span class="skill-item">DAX</span><span class="skill-item">Pandas</span>
+        <span class="skill-item">Window Functions</span><span class="skill-item">CTEs</span>
+        <span class="skill-item">Query Optimization</span><span class="skill-item">EDA</span>
       </div>
     </div>
     <div class="skill-group">
       <div class="skill-group-title">ML & AI</div>
       <div class="skill-list">
-        <span class="skill-item">scikit-learn</span>
-        <span class="skill-item">TensorFlow</span>
-        <span class="skill-item">NLP / TF-IDF</span>
-        <span class="skill-item">Sentiment Analysis</span>
-        <span class="skill-item">Generative AI</span>
-        <span class="skill-item">Prompt Engineering</span>
-        <span class="skill-item">Feature Engineering</span>
-        <span class="skill-item">Model Evaluation</span>
+        <span class="skill-item">scikit-learn</span><span class="skill-item">TensorFlow</span>
+        <span class="skill-item">NLP / TF-IDF</span><span class="skill-item">Sentiment Analysis</span>
+        <span class="skill-item">Generative AI</span><span class="skill-item">Prompt Engineering</span>
+        <span class="skill-item">Feature Engineering</span><span class="skill-item">Model Evaluation</span>
       </div>
     </div>
     <div class="skill-group">
       <div class="skill-group-title">Visualization & BI</div>
       <div class="skill-list">
-        <span class="skill-item">Power BI</span>
-        <span class="skill-item">Tableau</span>
-        <span class="skill-item">Matplotlib</span>
-        <span class="skill-item">Seaborn</span>
-        <span class="skill-item">ArcGIS</span>
-        <span class="skill-item">Excel</span>
-        <span class="skill-item">KPI Tracking</span>
-        <span class="skill-item">Data Storytelling</span>
+        <span class="skill-item">Power BI</span><span class="skill-item">Tableau</span>
+        <span class="skill-item">Matplotlib</span><span class="skill-item">Seaborn</span>
+        <span class="skill-item">ArcGIS</span><span class="skill-item">Excel</span>
+        <span class="skill-item">KPI Tracking</span><span class="skill-item">Data Storytelling</span>
       </div>
     </div>
     <div class="skill-group">
       <div class="skill-group-title">Data Engineering & Tools</div>
       <div class="skill-list">
-        <span class="skill-item">ETL Pipelines</span>
-        <span class="skill-item">Power Query</span>
-        <span class="skill-item">PostgreSQL</span>
-        <span class="skill-item">MySQL</span>
-        <span class="skill-item">Oracle DB</span>
-        <span class="skill-item">Git</span>
-        <span class="skill-item">R / Gplot2</span>
-        <span class="skill-item">Data Validation</span>
+        <span class="skill-item">ETL Pipelines</span><span class="skill-item">Power Query</span>
+        <span class="skill-item">PostgreSQL</span><span class="skill-item">MySQL</span>
+        <span class="skill-item">Oracle DB</span><span class="skill-item">Git</span>
+        <span class="skill-item">R / Gplot2</span><span class="skill-item">Data Validation</span>
         <span class="skill-item">Schema Design</span>
       </div>
     </div>
@@ -415,26 +419,13 @@
       <div class="edu-course"><strong>Relevant Coursework</strong> &nbsp; Database Management · Data Structures · Machine Learning · NLP</div>
     </div>
   </div>
-
   <div class="certs-section">
     <div class="section-num" style="margin-bottom:12px;">Certifications</div>
     <div class="certs-grid">
-      <div class="cert-item">
-        <div class="cert-dot"></div>
-        <div><div class="cert-text">Google Data Analytics</div><div class="cert-sub">Sheets · BigQuery · Tableau · SQL · R</div></div>
-      </div>
-      <div class="cert-item">
-        <div class="cert-dot"></div>
-        <div><div class="cert-text">Google AI Professional</div><div class="cert-sub">Generative AI · Vibe Coding</div></div>
-      </div>
-      <div class="cert-item">
-        <div class="cert-dot"></div>
-        <div><div class="cert-text">Oracle SQL</div><div class="cert-sub">Oracle DB · SQL Developer · PL/SQL</div></div>
-      </div>
-      <div class="cert-item">
-        <div class="cert-dot"></div>
-        <div><div class="cert-text">SQL for Data Science</div><div class="cert-sub">MySQL · PostgreSQL · Joins · Window Functions</div></div>
-      </div>
+      <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-text">Google Data Analytics</div><div class="cert-sub">Sheets · BigQuery · Tableau · SQL · R</div></div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-text">Google AI Professional</div><div class="cert-sub">Generative AI · Vibe Coding</div></div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-text">Oracle SQL</div><div class="cert-sub">Oracle DB · SQL Developer · PL/SQL</div></div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-text">SQL for Data Science</div><div class="cert-sub">MySQL · PostgreSQL · Joins · Window Functions</div></div></div>
     </div>
   </div>
 </div>
@@ -481,7 +472,6 @@
 </footer>
 
 <script>
-  const sections = document.querySelectorAll('section[id], div[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
