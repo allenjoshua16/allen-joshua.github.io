@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allen Joshua — Data Analyst</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #161616;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #e8e8e8;
+    --muted: #888;
+    --faint: #555;
+    --accent: #4a8fff;
+    --accent2: #6ab0ff;
+    --white: #ffffff;
+    --font: 'Trebuchet MS', Trebuchet, 'Lucida Grande', sans-serif;
+    --mono: 'Courier New', Courier, monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 52px;
+  }
+  .nav-logo { font-family: var(--mono); font-size: 14px; color: var(--muted); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+  .nav-links li a {
+    text-decoration: none; color: var(--muted); font-size: 13px;
+    padding: 0 14px; height: 52px; display: flex; align-items: center;
+    transition: color 0.2s; border-left: 1px solid var(--border);
+  }
+  .nav-links li:last-child a { border-right: 1px solid var(--border); }
+  .nav-links li a:hover, .nav-links li a.active { color: var(--white); }
+  .nav-links li a.nav-cta { color: var(--accent); }
+  .nav-links li a.nav-cta:hover { color: var(--white); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ── HERO ── */
+  #hero { padding: 80px 2rem 72px; max-width: 860px; margin: 0 auto; }
+  .hero-breadcrumb { font-family: var(--mono); font-size: 12px; color: var(--faint); margin-bottom: 32px; }
+  .hero-breadcrumb span { color: var(--accent); }
+  .hero-role { font-size: 13px; color: var(--muted); margin-bottom: 20px; letter-spacing: 0.03em; }
+  .hero-role span { color: var(--accent); }
+  h1 {
+    font-size: 52px; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px;
+    color: var(--white); margin-bottom: 20px;
+  }
+  h1 em { color: var(--accent); font-style: italic; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .hero-tag { font-family: var(--mono); font-size: 11px; color: var(--muted); padding: 3px 10px; border: 1px solid var(--border2); border-radius: 3px; }
+  .hero-bio { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 680px; margin-bottom: 32px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 13px; padding: 8px 18px; border-radius: 4px; transition: all 0.15s; font-family: var(--font); font-weight: 600; }
+  .btn-outline { border: 1px solid var(--border2); color: var(--muted); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-ghost { color: var(--muted); border: 1px solid transparent; }
+  .btn-ghost:hover { color: var(--white); }
+
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 24px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .pill { display: flex; flex-direction: column; gap: 2px; }
+  .pill-label { font-size: 11px; color: var(--faint); text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--mono); }
+  .pill-val { font-size: 14px; color: var(--white); font-weight: 700; }
+  .pill-val.accent { color: var(--accent); }
+
+  /* ── SECTION COMMON ── */
+  .section { padding: 72px 2rem; max-width: 860px; margin: 0 auto; }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+  .section-num { font-family: var(--mono); font-size: 11px; color: var(--faint); margin-bottom: 12px; }
+  h2 { font-size: 28px; font-weight: 700; color: var(--white); letter-spacing: -0.5px; margin-bottom: 32px; }
+  h3 { font-size: 18px; font-weight: 700; color: var(--white); letter-spacing: -0.3px; }
+
+  /* ── EXPERIENCE ── */
+  .exp-block { border: 1px solid var(--border); border-radius: 6px; padding: 28px; background: var(--bg2); }
+  .exp-top { display: flex; justify-content: space-between; align-items: start; margin-bottom: 6px; flex-wrap: wrap; gap: 8px; }
+  .exp-role-title { font-size: 17px; font-weight: 700; color: var(--white); }
+  .exp-company { font-size: 13px; color: var(--accent); margin-top: 3px; font-weight: 600; }
+  .exp-meta { text-align: right; }
+  .exp-date { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+  .exp-location { font-size: 12px; color: var(--faint); margin-top: 2px; }
+  .exp-list { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .exp-list li { padding-left: 18px; position: relative; font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .exp-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 12px; top: 1px; }
+  .exp-list li strong { color: var(--text); font-weight: 600; }
+
+  /* ── PROJECT FEATURED ── */
+  .featured-label { font-family: var(--mono); font-size: 11px; color: var(--faint); margin-bottom: 16px; letter-spacing: 0.08em; }
+  .featured-intro { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 28px; padding: 16px; border-left: 2px solid var(--border2); }
+  .featured-intro em { color: var(--faint); font-style: normal; font-family: var(--mono); font-size: 12px; display: block; margin-bottom: 8px; }
+
+  /* ── PROJECT CARDS ── */
+  .projects-grid { display: flex; flex-direction: column; gap: 20px; }
+  .project-card { border: 1px solid var(--border); border-radius: 6px; padding: 28px; background: var(--bg2); transition: border-color 0.2s; }
+  .project-card:hover { border-color: rgba(74,143,255,0.35); }
+  .proj-top { display: flex; justify-content: space-between; align-items: start; margin-bottom: 4px; flex-wrap: wrap; gap: 8px; }
+  .proj-num { font-family: var(--mono); font-size: 11px; color: var(--faint); margin-bottom: 8px; }
+  .proj-title { font-size: 17px; font-weight: 700; color: var(--white); }
+  .proj-date { font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .proj-desc { font-size: 14px; color: var(--muted); line-height: 1.75; margin: 12px 0 16px; }
+  .proj-bullets { list-style: none; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .proj-bullets li { padding-left: 18px; position: relative; font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .proj-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 12px; top: 1px; }
+  .proj-bullets li strong { color: var(--text); }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .proj-tag { font-family: var(--mono); font-size: 11px; color: var(--faint); padding: 3px 8px; border: 1px solid var(--border); border-radius: 3px; }
+  .proj-link { font-size: 13px; color: var(--accent); text-decoration: none; font-weight: 600; }
+  .proj-link:hover { color: var(--white); }
+  .proj-outcome { background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: 12px 16px; margin: 14px 0; font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .proj-outcome strong { color: var(--accent); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 4px; }
+
+  /* ── SKILLS ── */
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .skill-group { border: 1px solid var(--border); border-radius: 6px; padding: 22px; background: var(--bg2); }
+  .skill-group-title { font-family: var(--mono); font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+  .skill-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-item { font-size: 12px; color: var(--muted); padding: 4px 10px; border: 1px solid var(--border); border-radius: 3px; background: var(--bg3); }
+
+  /* ── EDUCATION ── */
+  .edu-grid { display: flex; flex-direction: column; gap: 16px; }
+  .edu-card { border: 1px solid var(--border); border-radius: 6px; padding: 24px; background: var(--bg2); }
+  .edu-top { display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+  .edu-degree { font-size: 16px; font-weight: 700; color: var(--white); }
+  .edu-years { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+  .edu-school { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 4px; }
+  .edu-course { font-size: 12px; color: var(--faint); margin-top: 8px; }
+  .edu-course strong { color: var(--muted); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .certs-section { margin-top: 40px; }
+  .certs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .cert-item { border: 1px solid var(--border); border-radius: 4px; padding: 14px 16px; background: var(--bg2); display: flex; align-items: center; gap: 10px; }
+  .cert-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .cert-text { font-size: 13px; color: var(--text); font-weight: 600; line-height: 1.4; }
+  .cert-sub { font-size: 11px; color: var(--faint); margin-top: 2px; font-family: var(--mono); }
+
+  /* ── CONTACT ── */
+  #contact-section { background: var(--bg2); border-top: 1px solid var(--border); }
+  .contact-inner { max-width: 860px; margin: 0 auto; padding: 72px 2rem; }
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 32px; }
+  .contact-card { border: 1px solid var(--border); border-radius: 6px; padding: 20px; text-decoration: none; display: block; transition: border-color 0.2s, background 0.2s; }
+  .contact-card:hover { border-color: rgba(74,143,255,0.4); background: var(--bg3); }
+  .cc-label { font-family: var(--mono); font-size: 10px; color: var(--faint); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .cc-val { font-size: 13px; color: var(--text); font-weight: 600; word-break: break-all; line-height: 1.4; }
+
+  /* ── FOOTER ── */
+  footer { border-top: 1px solid var(--border); padding: 24px 2rem; max-width: 860px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  footer p { font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  footer a { color: var(--faint); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.5s ease forwards; }
+  .d1 { animation-delay: 0.05s; opacity: 0; }
+  .d2 { animation-delay: 0.12s; opacity: 0; }
+  .d3 { animation-delay: 0.2s; opacity: 0; }
+  .d4 { animation-delay: 0.28s; opacity: 0; }
+  .d5 { animation-delay: 0.36s; opacity: 0; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero"><span>~/</span>allen-joshua</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-breadcrumb fade-up">~/allen-joshua · <span>data-analyst</span></div>
+  <div class="hero-role fade-up d1">Data Analyst · <span>UT Arlington</span></div>
+  <h1 class="fade-up d2">Turning messy data<br>into decisions that<br><em>actually get made</em></h1>
+  <div class="hero-tags fade-up d3">
+    <span class="hero-tag">SQL</span>
+    <span class="hero-tag">Python</span>
+    <span class="hero-tag">Power BI</span>
+    <span class="hero-tag">NLP & Sentiment</span>
+    <span class="hero-tag">Generative AI</span>
+    <span class="hero-tag">ETL Pipelines</span>
+  </div>
+  <p class="hero-bio fade-up d3">MS Data Science @ UT Arlington with 2+ years of industry experience transforming complex datasets into business insights. I build pipelines where data is cleaned before it's reported, dashboards where KPIs mean something, and workflows where AI reduces manual effort — not just adds noise.</p>
+  <div class="hero-ctas fade-up d4">
+    <a href="#experience" class="btn btn-outline">Work Experience</a>
+    <a href="#projects" class="btn btn-outline">Projects</a>
+    <a href="https://github.com/allenjoshua16" target="_blank" class="btn btn-outline">GitHub</a>
+    <a href="https://www.linkedin.com/in/allen-joshua-264983252/?skipRedirect=true" target="_blank" class="btn btn-outline">LinkedIn</a>
+    <a href="mailto:allenjoshua1217@gmail.com" class="btn btn-ghost">allenjoshua1217@gmail.com →</a>
+  </div>
+  <div class="hero-pills fade-up d5">
+    <div class="pill"><span class="pill-label">Availability</span><span class="pill-val accent">Open to roles</span></div>
+    <div class="pill"><span class="pill-label">Location</span><span class="pill-val">Texas, USA</span></div>
+    <div class="pill"><span class="pill-label">Industry Exp.</span><span class="pill-val">2+ years</span></div>
+    <div class="pill"><span class="pill-label">Records Analyzed</span><span class="pill-val accent">99K+</span></div>
+    <div class="pill"><span class="pill-label">Sentiment Accuracy</span><span class="pill-val accent">92%</span></div>
+    <div class="pill"><span class="pill-label">Query Perf. Gain</span><span class="pill-val accent">↑ +30%</span></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- EXPERIENCE -->
+<div class="section" id="experience">
+  <div class="section-num">01</div>
+  <h2>Work Experience</h2>
+  <div class="exp-block">
+    <div class="exp-top">
+      <div>
+        <div class="exp-role-title">Data Analyst</div>
+        <div class="exp-company">Webeneur</div>
+      </div>
+      <div class="exp-meta">
+        <div class="exp-date">Jun 2022 – Apr 2024</div>
+        <div class="exp-location">Mumbai, India</div>
+      </div>
+    </div>
+    <ul class="exp-list">
+      <li>Processed and transformed <strong>1,000+ satellite imagery records</strong> into structured datasets, improving data accessibility and reducing analysis time by <strong>30%</strong> for land use studies.</li>
+      <li>Extracted, cleaned, and aggregated spatial data to compute area distributions across multiple land categories, enabling accurate comparative analysis across regions.</li>
+      <li>Conducted multi-year trend analysis identifying <strong>urban expansion patterns across 5+ regions</strong>, supporting data-driven environmental insights.</li>
+      <li>Developed <strong>10+ geospatial metrics and interactive dashboards</strong> (Excel, ArcGIS), enhancing stakeholder visibility into land distribution trends across 4 major categories.</li>
+      <li>Collaborated with cross-functional research teams, improving reporting efficiency and decision-making turnaround by <strong>25%</strong>.</li>
+      <li>Implemented data validation and quality checks, <strong>reducing classification inconsistencies by 20%</strong>.</li>
+      <li>Leveraged generative AI tools to automate report drafting and summarization, <strong>reducing manual documentation effort by 40%</strong>.</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- PROJECTS -->
+<div class="section" id="projects">
+  <div class="section-num">02</div>
+  <h2>Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="proj-num">PROJECT · 01</div>
+      <div class="proj-top">
+        <h3 class="proj-title">Retail Sales Analytics</h3>
+        <span class="proj-date">Nov 2025</span>
+      </div>
+      <ul class="proj-bullets">
+        <li>Designed a relational database for <strong>99K+ transactions</strong>, improving data organization and query performance by <strong>30%</strong>.</li>
+        <li>Developed <strong>25+ advanced SQL queries</strong> (CTEs, joins, window functions) to uncover revenue trends, customer segmentation, and seasonality insights.</li>
+        <li>Built <strong>5+ Power BI dashboards</strong> tracking KPIs, increasing visibility into product performance and customer behavior by <strong>40%</strong>.</li>
+      </ul>
+      <div class="proj-tags">
+        <span class="proj-tag">SQL</span>
+        <span class="proj-tag">Power BI</span>
+        <span class="proj-tag">Data Modeling</span>
+        <span class="proj-tag">CTEs</span>
+        <span class="proj-tag">Window Functions</span>
+      </div>
+      <a href="https://github.com/allenjoshua16" target="_blank" class="proj-link">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-num">PROJECT · 02</div>
+      <div class="proj-top">
+        <h3 class="proj-title">Customer Sentiment Intelligence</h3>
+        <span class="proj-date">Jan 2026</span>
+      </div>
+      <ul class="proj-bullets">
+        <li>Processed <strong>50K+ customer reviews</strong> using NLP, achieving <strong>92% sentiment classification accuracy</strong>.</li>
+        <li>Engineered text features (TF-IDF, preprocessing pipelines) to convert unstructured data into actionable insights.</li>
+        <li>Delivered <strong>3+ interactive dashboards</strong>, reducing reporting time by <strong>35%</strong> and highlighting key sentiment trends across brands.</li>
+      </ul>
+      <div class="proj-outcome">
+        <strong>Outcome</strong>
+        Unstructured customer feedback turned into a live intelligence layer — stakeholders stopped guessing sentiment and started acting on it.
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag">NLP</span>
+        <span class="proj-tag">TF-IDF</span>
+        <span class="proj-tag">Power BI</span>
+        <span class="proj-tag">scikit-learn</span>
+      </div>
+      <a href="https://github.com/allenjoshua16" target="_blank" class="proj-link">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-num">PROJECT · 03</div>
+      <div class="proj-top">
+        <h3 class="proj-title">AI-Augmented Data Storytelling</h3>
+        <span class="proj-date">Mar 2026</span>
+      </div>
+      <ul class="proj-bullets">
+        <li>Built an AI-assisted pipeline to convert analytical outputs into <strong>executive-ready narratives</strong> using generative AI.</li>
+        <li>Designed prompt engineering workflows to generate clear, insight-driven summaries from structured datasets.</li>
+        <li>Automated reporting processes, <strong>reducing manual effort by 50%</strong> while improving consistency and communication of insights.</li>
+      </ul>
+      <div class="proj-outcome">
+        <strong>Outcome</strong>
+        What used to take hours of manual write-up is now a structured, repeatable pipeline — analysts spend time on analysis, not formatting.
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag">Generative AI</span>
+        <span class="proj-tag">Prompt Engineering</span>
+        <span class="proj-tag">Automation</span>
+      </div>
+      <a href="https://github.com/allenjoshua16" target="_blank" class="proj-link">View on GitHub →</a>
+    </div>
+
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- SKILLS -->
+<div class="section" id="skills">
+  <div class="section-num">03</div>
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Analytics & Querying</div>
+      <div class="skill-list">
+        <span class="skill-item">SQL</span>
+        <span class="skill-item">Python</span>
+        <span class="skill-item">BigQuery</span>
+        <span class="skill-item">Power BI</span>
+        <span class="skill-item">DAX</span>
+        <span class="skill-item">Pandas</span>
+        <span class="skill-item">Window Functions</span>
+        <span class="skill-item">CTEs</span>
+        <span class="skill-item">Query Optimization</span>
+        <span class="skill-item">EDA</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">ML & AI</div>
+      <div class="skill-list">
+        <span class="skill-item">scikit-learn</span>
+        <span class="skill-item">TensorFlow</span>
+        <span class="skill-item">NLP / TF-IDF</span>
+        <span class="skill-item">Sentiment Analysis</span>
+        <span class="skill-item">Generative AI</span>
+        <span class="skill-item">Prompt Engineering</span>
+        <span class="skill-item">Feature Engineering</span>
+        <span class="skill-item">Model Evaluation</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Visualization & BI</div>
+      <div class="skill-list">
+        <span class="skill-item">Power BI</span>
+        <span class="skill-item">Tableau</span>
+        <span class="skill-item">Matplotlib</span>
+        <span class="skill-item">Seaborn</span>
+        <span class="skill-item">ArcGIS</span>
+        <span class="skill-item">Excel</span>
+        <span class="skill-item">KPI Tracking</span>
+        <span class="skill-item">Data Storytelling</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Data Engineering & Tools</div>
+      <div class="skill-list">
+        <span class="skill-item">ETL Pipelines</span>
+        <span class="skill-item">Power Query</span>
+        <span class="skill-item">PostgreSQL</span>
+        <span class="skill-item">MySQL</span>
+        <span class="skill-item">Oracle DB</span>
+        <span class="skill-item">Git</span>
+        <span class="skill-item">R / Gplot2</span>
+        <span class="skill-item">Data Validation</span>
+        <span class="skill-item">Schema Design</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- EDUCATION -->
+<div class="section" id="education">
+  <div class="section-num">04</div>
+  <h2>Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-top">
+        <div class="edu-degree">Master of Science — Data Science</div>
+        <div class="edu-years">2025 – 2027</div>
+      </div>
+      <div class="edu-school">University of Texas at Arlington</div>
+      <div class="edu-course"><strong>Relevant Coursework</strong> &nbsp; Data Mining · Machine Learning · Big Data Analytics · Statistical Modeling</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-top">
+        <div class="edu-degree">BE — Information Technology <span style="font-size:12px;font-weight:400;color:var(--faint)">(Honors in Data Science)</span></div>
+        <div class="edu-years">2020 – 2024</div>
+      </div>
+      <div class="edu-school">Don Bosco Institute of Technology</div>
+      <div class="edu-course"><strong>Relevant Coursework</strong> &nbsp; Database Management · Data Structures · Machine Learning · NLP</div>
+    </div>
+  </div>
+
+  <div class="certs-section">
+    <div class="section-num" style="margin-bottom:12px;">Certifications</div>
+    <div class="certs-grid">
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div><div class="cert-text">Google Data Analytics</div><div class="cert-sub">Sheets · BigQuery · Tableau · SQL · R</div></div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div><div class="cert-text">Google AI Professional</div><div class="cert-sub">Generative AI · Vibe Coding</div></div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div><div class="cert-text">Oracle SQL</div><div class="cert-sub">Oracle DB · SQL Developer · PL/SQL</div></div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div><div class="cert-text">SQL for Data Science</div><div class="cert-sub">MySQL · PostgreSQL · Joins · Window Functions</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- CONTACT -->
+<div id="contact-section">
+  <div class="contact-inner" id="contact">
+    <div class="section-num">05</div>
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <a href="mailto:allenjoshua1217@gmail.com" class="contact-card">
+        <div class="cc-label">Email</div>
+        <div class="cc-val">allenjoshua1217@gmail.com</div>
+      </a>
+      <a href="https://www.linkedin.com/in/allen-joshua-264983252/?skipRedirect=true" target="_blank" class="contact-card">
+        <div class="cc-label">LinkedIn</div>
+        <div class="cc-val">allen-joshua-264983252</div>
+      </a>
+      <a href="https://github.com/allenjoshua16" target="_blank" class="contact-card">
+        <div class="cc-label">GitHub</div>
+        <div class="cc-val">allenjoshua16</div>
+      </a>
+      <a href="tel:+18172621425" class="contact-card">
+        <div class="cc-label">Phone</div>
+        <div class="cc-val">+1 (817) 262 1425</div>
+      </a>
+      <div class="contact-card" style="cursor:default;">
+        <div class="cc-label">Location</div>
+        <div class="cc-val">Texas, USA</div>
+      </div>
+      <div class="contact-card" style="cursor:default;">
+        <div class="cc-label">Status</div>
+        <div class="cc-val" style="color:var(--accent);">Open to roles</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© Allen Joshua &nbsp;·&nbsp; MS Data Science · UT Arlington &nbsp;·&nbsp; <a href="mailto:allenjoshua1217@gmail.com">allenjoshua1217@gmail.com</a></p>
+  <p>Texas, USA · Open to opportunities</p>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          const href = link.getAttribute('href').replace('#','');
+          if (entry.target.id === href) link.classList.add('active');
+        });
+      }
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('[id]').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
