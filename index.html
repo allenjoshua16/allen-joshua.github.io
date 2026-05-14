@@ -26,7 +26,6 @@
   html { scroll-behavior: smooth; }
   body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
 
-  /* NAV */
   nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
@@ -50,7 +49,6 @@
   .nav-links li a.nav-cta { color: var(--accent); }
   .nav-links li a.nav-cta:hover { color: var(--white); }
 
-  /* HERO */
   #hero { padding: 80px 2rem 72px; max-width: 860px; margin: 0 auto; }
   .hero-breadcrumb { font-family: var(--mono); font-size: 13px; color: #aaa; margin-bottom: 32px; }
   .hero-breadcrumb span { color: var(--accent); }
@@ -61,19 +59,13 @@
   .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
   .hero-tag { font-family: var(--mono); font-size: 11px; color: #aaa; padding: 3px 10px; border: 1px solid var(--border2); border-radius: 3px; }
   .hero-bio { font-size: 15px; color: #aaa; line-height: 1.8; max-width: 680px; margin-bottom: 32px; }
-  .hero-ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 10px; }
   .btn { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 13px; padding: 8px 18px; border-radius: 4px; transition: all 0.15s; font-family: var(--font); font-weight: 600; }
   .btn-outline { border: 1px solid var(--border2); color: #bbb; }
   .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
   .btn-ghost { color: #aaa; border: 1px solid transparent; }
   .btn-ghost:hover { color: var(--white); }
-  .hero-pills { display: flex; flex-wrap: wrap; gap: 24px; padding-top: 28px; border-top: 1px solid var(--border); }
-  .pill { display: flex; flex-direction: column; gap: 4px; }
-  .pill-label { font-size: 11px; color: #aaa; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--mono); }
-  .pill-val { font-size: 14px; color: var(--white); font-weight: 700; }
-  .pill-val.accent { color: var(--accent); }
 
-  /* OPEN ROLES */
   .open-roles-bar { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 2rem; }
   .open-roles-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
   .open-roles-label { font-family: var(--mono); font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; white-space: nowrap; display: flex; align-items: center; gap: 8px; }
@@ -83,21 +75,18 @@
   .role-chip { font-size: 12px; font-weight: 600; padding: 5px 14px; border: 1px solid rgba(74,143,255,0.3); border-radius: 100px; color: var(--accent2); background: rgba(74,143,255,0.06); transition: all 0.15s; }
   .role-chip:hover { background: rgba(74,143,255,0.14); border-color: var(--accent); color: var(--white); }
 
-  /* SECTIONS */
   .section { padding: 72px 2rem; max-width: 860px; margin: 0 auto; }
   .section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
   .section-num { font-family: var(--mono); font-size: 11px; color: #888; margin-bottom: 12px; }
   h2 { font-size: 28px; font-weight: 700; color: var(--white); letter-spacing: -0.5px; margin-bottom: 32px; }
   h3 { font-size: 18px; font-weight: 700; color: var(--white); letter-spacing: -0.3px; }
 
-  /* ABOUT */
   .about-text { font-size: 15px; color: #bbb; line-height: 1.85; }
   .about-text p { margin-bottom: 18px; }
   .about-text p:last-child { margin-bottom: 0; }
   .about-text strong { color: var(--white); font-weight: 600; }
   .about-text em { color: var(--accent2); font-style: normal; }
 
-  /* EXPERIENCE */
   .exp-block { border: 1px solid var(--border); border-radius: 6px; padding: 28px; background: var(--bg2); }
   .exp-top { display: flex; justify-content: space-between; align-items: start; margin-bottom: 6px; flex-wrap: wrap; gap: 8px; }
   .exp-role-title { font-size: 17px; font-weight: 700; color: var(--white); }
@@ -110,7 +99,6 @@
   .exp-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 12px; top: 1px; }
   .exp-list li strong { color: var(--text); font-weight: 600; }
 
-  /* PROJECTS */
   .projects-grid { display: flex; flex-direction: column; gap: 20px; }
   .project-card { border: 1px solid var(--border); border-radius: 6px; padding: 28px; background: var(--bg2); transition: border-color 0.2s; }
   .project-card:hover { border-color: rgba(74,143,255,0.35); }
@@ -129,20 +117,20 @@
   .proj-outcome { background: var(--bg3); border: 1px solid var(--border2); border-radius: 4px; padding: 12px 16px; margin: 14px 0; font-size: 13px; color: #aaa; line-height: 1.6; }
   .proj-outcome strong { color: var(--accent); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 4px; }
 
-  /* SKILLS */
   .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .skill-group { border: 1px solid var(--border); border-radius: 6px; padding: 22px; background: var(--bg2); }
   .skill-group-title { font-family: var(--mono); font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
   .skill-list { display: flex; flex-wrap: wrap; gap: 6px; }
   .skill-item { font-size: 12px; color: #bbb; padding: 4px 10px; border: 1px solid var(--border2); border-radius: 3px; background: var(--bg3); }
 
-  /* EDUCATION */
   .edu-grid { display: flex; flex-direction: column; gap: 16px; }
   .edu-card { border: 1px solid var(--border); border-radius: 6px; padding: 24px; background: var(--bg2); }
   .edu-top { display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
   .edu-degree { font-size: 16px; font-weight: 700; color: var(--white); }
   .edu-years { font-family: var(--mono); font-size: 12px; color: #999; }
-  .edu-school { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 2px; }
+  .edu-school { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+  .edu-school a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+  .edu-school a:hover { color: var(--white); text-decoration: underline; }
   .edu-location { font-size: 12px; color: #888; margin-bottom: 4px; }
   .edu-course { font-size: 12px; color: #999; margin-top: 8px; }
   .edu-course strong { color: #bbb; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
@@ -153,7 +141,6 @@
   .cert-text { font-size: 13px; color: var(--text); font-weight: 600; line-height: 1.4; }
   .cert-sub { font-size: 11px; color: #999; margin-top: 2px; font-family: var(--mono); }
 
-  /* CONTACT */
   #contact-section { background: var(--bg2); border-top: 1px solid var(--border); }
   .contact-inner { max-width: 860px; margin: 0 auto; padding: 72px 2rem; }
   .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 32px; }
@@ -173,12 +160,10 @@
   .d2 { animation-delay: 0.12s; opacity: 0; }
   .d3 { animation-delay: 0.2s; opacity: 0; }
   .d4 { animation-delay: 0.28s; opacity: 0; }
-  .d5 { animation-delay: 0.36s; opacity: 0; }
 </style>
 </head>
 <body>
 
-<!-- NAV — name top left in white -->
 <nav>
   <div class="nav-left">
     <span class="nav-name">Allen Joshua</span>
@@ -194,7 +179,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-breadcrumb fade-up">~/allen-joshua · <span>data-analyst · data-scientist</span></div>
   <div class="hero-role fade-up d1">Data Analyst & MS Data Science · <span>UT Arlington</span></div>
@@ -216,14 +200,8 @@
     <a href="https://www.linkedin.com/in/allen-joshua-264983252/?skipRedirect=true" target="_blank" class="btn btn-outline">LinkedIn</a>
     <a href="mailto:allenjoshua1217@gmail.com" class="btn btn-ghost">allenjoshua1217@gmail.com →</a>
   </div>
-  <div class="hero-pills fade-up d5">
-    <div class="pill"><span class="pill-label">Availability</span><span class="pill-val accent">Open to roles</span></div>
-    <div class="pill"><span class="pill-label">Location</span><span class="pill-val">Texas, USA</span></div>
-    <div class="pill"><span class="pill-label">Industry Exp.</span><span class="pill-val">2+ years</span></div>
-  </div>
 </section>
 
-<!-- OPEN TO ROLES -->
 <div class="open-roles-bar">
   <div class="open-roles-inner">
     <div class="open-roles-label">Open to roles</div>
@@ -239,7 +217,6 @@
 
 <hr class="section-divider">
 
-<!-- ABOUT -->
 <div class="section" id="about">
   <div class="section-num">00</div>
   <h2>About Me</h2>
@@ -253,7 +230,6 @@
 
 <hr class="section-divider">
 
-<!-- EXPERIENCE -->
 <div class="section" id="experience">
   <div class="section-num">01</div>
   <h2>Work Experience</h2>
@@ -279,12 +255,12 @@
 
 <hr class="section-divider">
 
-<!-- PROJECTS -->
 <div class="section" id="projects">
   <div class="section-num">02</div>
   <h2>Projects</h2>
   <div class="projects-grid">
 
+    <!-- PROJECT 01 — ViT Robustness Lab -->
     <div class="project-card">
       <div class="proj-num">PROJECT · 01</div>
       <div class="proj-top">
@@ -304,9 +280,10 @@
         <span class="proj-tag">Python</span><span class="proj-tag">Vision Transformers</span>
         <span class="proj-tag">Deep Learning</span><span class="proj-tag">Generative AI</span><span class="proj-tag">Explainability</span>
       </div>
-      <a href="https://github.com/allenjoshua16" target="_blank" class="proj-link">View on GitHub →</a>
+      <a href="https://github.com/allenjoshua16/ViT-Robustness-Lab" target="_blank" class="proj-link">View on GitHub →</a>
     </div>
 
+    <!-- PROJECT 02 — AI-Augmented Data Storytelling -->
     <div class="project-card">
       <div class="proj-num">PROJECT · 02</div>
       <div class="proj-top">
@@ -329,6 +306,7 @@
       <a href="https://github.com/allenjoshua16" target="_blank" class="proj-link">View on GitHub →</a>
     </div>
 
+    <!-- PROJECT 03 — Retail Sales Analytics -->
     <div class="project-card">
       <div class="proj-num">PROJECT · 03</div>
       <div class="proj-top">
@@ -344,7 +322,7 @@
         <span class="proj-tag">SQL</span><span class="proj-tag">Power BI</span><span class="proj-tag">Data Modeling</span>
         <span class="proj-tag">CTEs</span><span class="proj-tag">Window Functions</span>
       </div>
-      <a href="https://github.com/allenjoshua16" target="_blank" class="proj-link">View on GitHub →</a>
+      <a href="https://github.com/allenjoshua16/Amazon-Sales-data-analysis" target="_blank" class="proj-link">View on GitHub →</a>
     </div>
 
   </div>
@@ -352,7 +330,6 @@
 
 <hr class="section-divider">
 
-<!-- SKILLS -->
 <div class="section" id="skills">
   <div class="section-num">03</div>
   <h2>Skills</h2>
@@ -399,7 +376,6 @@
 
 <hr class="section-divider">
 
-<!-- EDUCATION -->
 <div class="section" id="education">
   <div class="section-num">04</div>
   <h2>Education</h2>
@@ -409,7 +385,9 @@
         <div class="edu-degree">Master of Science — Data Science</div>
         <div class="edu-years">Jan 2025 – Dec 2026</div>
       </div>
-      <div class="edu-school">University of Texas at Arlington</div>
+      <div class="edu-school">
+        <a href="https://www.uta.edu/" target="_blank">University of Texas at Arlington</a>
+      </div>
       <div class="edu-location">📍 Arlington, Texas, USA</div>
       <div class="edu-course"><strong>Relevant Coursework</strong> &nbsp; Data Mining · Machine Learning · Big Data Analytics · Statistical Modeling</div>
     </div>
@@ -418,7 +396,9 @@
         <div class="edu-degree">BE — Information Technology <span style="font-size:12px;font-weight:400;color:#888">(Honors in Data Science)</span></div>
         <div class="edu-years">Aug 2020 – May 2024</div>
       </div>
-      <div class="edu-school">Don Bosco Institute of Technology</div>
+      <div class="edu-school">
+        <a href="https://www.dbit.in/" target="_blank">Don Bosco Institute of Technology</a>
+      </div>
       <div class="edu-location">📍 Mumbai, India</div>
       <div class="edu-course"><strong>Relevant Coursework</strong> &nbsp; Database Management · Data Structures · Machine Learning · NLP</div>
     </div>
@@ -436,7 +416,6 @@
 
 <hr class="section-divider">
 
-<!-- CONTACT -->
 <div id="contact-section">
   <div class="contact-inner" id="contact">
     <div class="section-num">05</div>
